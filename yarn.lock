@@ -1790,7 +1790,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@craftjs/core@workspace:packages/core"
   dependencies:
-    "@craftjs/utils": ^0.2.0-beta.8
+    "@craftjs/utils": "workspace:*"
     "@types/react": 17.0.2
     debounce: ^1.2.0
     lodash: ^4.17.20
@@ -1817,7 +1817,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@craftjs/utils@^0.2.0-beta.8, @craftjs/utils@workspace:packages/utils":
+"@craftjs/utils@^0.2.0-beta.8, @craftjs/utils@workspace:*, @craftjs/utils@workspace:packages/utils":
   version: 0.0.0-use.local
   resolution: "@craftjs/utils@workspace:packages/utils"
   dependencies:

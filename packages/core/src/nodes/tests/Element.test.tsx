@@ -88,6 +88,7 @@ describe('<Element />', () => {
     it('should render a new linked Node', () => {
       expect(NodeElementTest).toHaveBeenCalledWith({
         id: newLinkedNode.id,
+        color: '#fff',
       });
     });
   });
@@ -113,6 +114,7 @@ describe('<Element />', () => {
     it('should render existing Node', () => {
       expect(NodeElementTest).toHaveBeenCalledWith({
         id: existingLinkedNode.id,
+        color: '#000',
       });
     });
   });

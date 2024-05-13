@@ -24,5 +24,7 @@ export const RenderNodeToElement: React.FC<React.PropsWithChildren<
     return null;
   }
 
-  return React.createElement(onRender, { render: render || <DefaultRender {...rest} /> });
+  return React.createElement(onRender, {
+    render: render || <DefaultRender {...rest} />,
+  });
 };

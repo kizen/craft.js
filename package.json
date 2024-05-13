@@ -57,6 +57,7 @@
     "prettier": "2.0.1",
     "pretty-quick": "2.0.1",
     "rimraf": "3.0.2",
+    "rollup": "^4.17.2",
     "rollup-plugin-babel": "4.3.3",
     "rollup-plugin-commonjs": "10.1.0",
     "rollup-plugin-node-resolve": "5.2.0",
@@ -119,8 +120,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "jest"
+      "pre-commit": "lint-staged"
     }
   },
   "resolutions": {

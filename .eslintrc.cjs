@@ -3,7 +3,7 @@ module.exports = {
     'prettier/@typescript-eslint',
     'plugin:prettier/recommended',
     'react-app',
-    "plugin:import/typescript",
+    'plugin:import/typescript',
   ],
   rules: {
     'no-console': 1,

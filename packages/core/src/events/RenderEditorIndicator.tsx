@@ -6,7 +6,7 @@ import movePlaceholder from './movePlaceholder';
 
 import { useInternalEditor } from '../editor/useInternalEditor';
 
-export const RenderEditorIndicator = () => {
+export const RenderEditorIndicator = ({ show = true }) => {
   const { indicator, indicatorOptions, enabled } = useInternalEditor(
     (state) => ({
       indicator: state.indicator,
@@ -30,7 +30,7 @@ export const RenderEditorIndicator = () => {
     handler.enable();
   }, [enabled, handler]);
 
-  if (!indicator) {
+  if (!show || !indicator) {
     return null;
   }
 

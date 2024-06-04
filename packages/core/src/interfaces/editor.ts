@@ -18,6 +18,7 @@ export type Options = {
   onNodesChange: (query: QueryCallbacksFor<typeof QueryMethods>) => void;
   resolver: Resolver;
   enabled: boolean;
+  showIndicator?: boolean;
   indicator: Partial<{
     success: string;
     error: string;

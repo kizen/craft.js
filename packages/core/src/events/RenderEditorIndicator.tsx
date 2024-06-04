@@ -1,5 +1,5 @@
 import { RenderIndicator, getDOMInfo } from '@craftjs/utils';
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import { useEventHandler } from './EventContext';
 import movePlaceholder from './movePlaceholder';
@@ -7,6 +7,8 @@ import movePlaceholder from './movePlaceholder';
 import { useInternalEditor } from '../editor/useInternalEditor';
 
 export const RenderEditorIndicator = ({ show = true }) => {
+  const firstRender = useRef(true);
+  const [, rerender] = useState(null);
   const { indicator, indicatorOptions, enabled } = useInternalEditor(
     (state) => ({
       indicator: state.indicator,
@@ -29,6 +31,14 @@ export const RenderEditorIndicator = ({ show = true }) => {
 
     handler.enable();
   }, [enabled, handler]);
+
+  useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false;
+    } else {
+      rerender(Date.now());
+    }
+  }, [show]);
 
   if (!show || !indicator) {
     return null;

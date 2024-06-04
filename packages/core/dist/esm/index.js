@@ -24,8 +24,8 @@ import {
   ERROR_MOVE_OUTGOING_PARENT as b,
   getRandomId as C,
   ERROR_DESERIALIZE_COMPONENT_NOT_IN_RESOLVER as T,
-  getDOMInfo as k,
-  EventHandlers as w,
+  getDOMInfo as w,
+  EventHandlers as k,
   DerivedEventHandlers as D,
   isChromium as x,
   isLinux as I,
@@ -492,7 +492,7 @@ var Oe = function (e) {
   Te = function (e, t) {
     return 'string' == typeof e ? e : { resolvedName: Ce(t, e) };
   },
-  ke = function (e, t) {
+  we = function (e, t) {
     var n = e.type,
       r = e.isCanvas,
       o = e.props;
@@ -504,10 +504,10 @@ var Oe = function (e) {
             (e[n] =
               'children' === n && 'string' != typeof r
                 ? B.map(r, function (e) {
-                    return 'string' == typeof e ? e : ke(e, t);
+                    return 'string' == typeof e ? e : we(e, t);
                   })
                 : r.type
-                ? ke(r, t)
+                ? we(r, t)
                 : r),
           e
         );
@@ -515,12 +515,12 @@ var Oe = function (e) {
       { type: Te(n, t), isCanvas: !!r, props: o }
     );
   },
-  we = function (e, t) {
+  ke = function (e, t) {
     var n = e.type,
       r = e.props,
       o = e.isCanvas,
       a = K(e, ['type', 'props', 'isCanvas', 'name']),
-      i = ke({ type: n, isCanvas: o, props: r }, t);
+      i = we({ type: n, isCanvas: o, props: r }, t);
     return G(G({}, i), a);
   };
 function De(e, t) {
@@ -670,7 +670,7 @@ function De(e, t) {
       }
     },
     toSerializedNode: function () {
-      return we(n.data, e.options.resolver);
+      return ke(n.data, e.options.resolver);
     },
     toNodeTree: function (e) {
       var n = U([t], this.descendants(!0, e)).reduce(function (e, t) {
@@ -879,7 +879,7 @@ function Pe(e) {
               ? s.reduce(function (t, n) {
                   var r = a(e.nodes[n]);
                   if (r) {
-                    var o = G({ id: n }, k(r));
+                    var o = G({ id: n }, w(r));
                     t.push(o);
                   }
                   return t;
@@ -1090,7 +1090,7 @@ var Le = (function (e) {
       }),
       t
     );
-  })(w),
+  })(k),
   Re = (function (e) {
     function t() {
       return (null !== e && e.apply(this, arguments)) || this;
@@ -1167,7 +1167,7 @@ var Le = (function (e) {
           ? n
           : e.data.nodes.reduce(function (e, n) {
               var r = t.store.query.node(n).get().dom;
-              return r && e.push(G({ id: n }, k(r))), e;
+              return r && e.push(G({ id: n }, w(r))), e;
             }, []);
       }),
       (e.prototype.getCanvasAncestor = function (e) {
@@ -1198,7 +1198,7 @@ var Le = (function (e) {
           ((this.currentDropTargetId = e),
           (this.currentDropTargetCanvasAncestorId = r.id),
           r.data.parent &&
-            this.isNearBorders(k(r.dom), t, n) &&
+            this.isNearBorders(w(r.dom), t, n) &&
             !this.store.query.node(r.id).isLinkedNode() &&
             (r = this.store.query.node(r.data.parent).get()),
           r)
@@ -1517,42 +1517,50 @@ function ze(e, t, n, r) {
 var Me = function (e) {
     var t = e.show,
       n = void 0 === t || t,
-      r = re(function (e) {
+      r = M(!0),
+      o = z(null)[1],
+      a = re(function (e) {
         return {
           indicator: e.indicator,
           indicatorOptions: e.options.indicator,
           enabled: e.options.enabled,
         };
       }),
-      o = r.indicator,
-      a = r.indicatorOptions,
-      i = r.enabled,
-      d = ne();
+      i = a.indicator,
+      d = a.indicatorOptions,
+      s = a.enabled,
+      c = ne();
     return (
       F(
         function () {
-          d && (i ? d.enable() : d.disable());
+          c && (s ? c.enable() : c.disable());
         },
-        [i, d]
+        [s, c]
       ),
-      n && o
+      F(
+        function () {
+          r.current ? (r.current = !1) : o(Date.now());
+        },
+        [n]
+      ),
+      n && i
         ? L.createElement(S, {
             style: G(
               G(
                 {},
                 ze(
-                  o.placement,
-                  k(o.placement.parent.dom),
-                  o.placement.currentNode && k(o.placement.currentNode.dom),
-                  a.thickness
+                  i.placement,
+                  w(i.placement.parent.dom),
+                  i.placement.currentNode && w(i.placement.currentNode.dom),
+                  d.thickness
                 )
               ),
               {
-                backgroundColor: o.error ? a.error : a.success,
-                transition: a.transition || '0.2s ease-in',
+                backgroundColor: i.error ? d.error : d.success,
+                transition: d.transition || '0.2s ease-in',
               }
             ),
-            parentDom: o.placement.parent.dom,
+            parentDom: i.placement.parent.dom,
           })
         : null
     );
@@ -2076,7 +2084,7 @@ export {
   He as editorInitialState,
   le as elementPropToNodeData,
   Xe as expectEditorState,
-  we as serializeNode,
+  ke as serializeNode,
   me as useEditor,
   $e as useEditorStore,
   ne as useEventHandler,

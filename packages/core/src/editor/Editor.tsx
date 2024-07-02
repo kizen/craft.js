@@ -20,6 +20,7 @@ export const Editor: React.FC<React.PropsWithChildren<Partial<Options>>> = ({
   resolver,
   enabled,
   indicator,
+  showIndicator = true,
 }) => {
   // we do not want to warn the user if no resolver was supplied
   if (resolver !== undefined) {
@@ -109,7 +110,7 @@ export const Editor: React.FC<React.PropsWithChildren<Partial<Options>>> = ({
 
   return context ? (
     <EditorContext.Provider value={context}>
-      <Events>{children}</Events>
+      <Events showIndicator={showIndicator}>{children}</Events>
     </EditorContext.Provider>
   ) : null;
 };

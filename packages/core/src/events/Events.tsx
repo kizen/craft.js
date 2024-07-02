@@ -7,9 +7,13 @@ import { EditorContext } from '../editor/EditorContext';
 
 type EventsProps = {
   children?: React.ReactNode;
+  showIndicator?: boolean;
 };
 
-export const Events: React.FC<EventsProps> = ({ children }) => {
+export const Events: React.FC<EventsProps> = ({
+  children,
+  showIndicator = true,
+}) => {
   const store = useContext(EditorContext);
 
   const handler = useMemo(() => store.query.getOptions().handlers(store), [
@@ -22,7 +26,7 @@ export const Events: React.FC<EventsProps> = ({ children }) => {
 
   return (
     <EventHandlerContext.Provider value={handler}>
-      <RenderEditorIndicator />
+      <RenderEditorIndicator show={showIndicator} />
       {children}
     </EventHandlerContext.Provider>
   );

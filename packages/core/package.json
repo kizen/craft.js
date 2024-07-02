@@ -2,6 +2,7 @@
   "name": "@craftjs/core",
   "version": "0.2.0-beta.8",
   "description": "A React Framework for building extensible drag and drop page editors",
+  "type": "module",
   "keywords": [
     "react",
     "drag-and-drop",
@@ -18,8 +19,8 @@
   "author": "Prev Wong <prevwong@gmail.com>",
   "homepage": "https://github.com/prevwong/craft.js/",
   "license": "MIT",
-  "main": "./src/index.tsx",
-  "module": "./src/index.tsx",
+  "main": "./dist/esm/index.js",
+  "module": "./dist/esm/index.js",
   "types": "./lib/index.d.ts",
   "repository": {
     "type": "git",
@@ -42,6 +43,7 @@
   },
   "devDependencies": {
     "@types/react": "17.0.2",
+    "cross-env": "^7.0.3",
     "react": "17.0.2"
   },
   "peerDependencies": {

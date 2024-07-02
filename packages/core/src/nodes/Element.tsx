@@ -81,5 +81,7 @@ export function Element<T extends React.ElementType>({
     }
   });
 
-  return linkedNodeId ? <NodeElement id={linkedNodeId} {...elementProps} /> : null;
+  return linkedNodeId ? (
+    <NodeElement id={linkedNodeId} {...elementProps} />
+  ) : null;
 }
